@@ -8,19 +8,10 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject var mealService: MealService
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-                HStack {
-                    ForEach(MealService.Category.allCases, id: \.self) { category in
-                        Text(category.rawValue)
-                            .fontWeight(.semibold)
-                            .foregroundColor(mealService.categorySelected == category.rawValue ? .orange : .cyan)
-                    }
-                }
-            }
+            FilterRowView()
         }
         .padding()
     }
@@ -32,3 +23,4 @@ struct HomeView_Previews: PreviewProvider {
             .environmentObject(MealService())
     }
 }
+

@@ -19,6 +19,8 @@
 		DBB70A912A4F7B810053934F /* NetworkLayerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB70A902A4F7B810053934F /* NetworkLayerError.swift */; };
 		DBB70A932A4F7DFC0053934F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB70A922A4F7DFC0053934F /* Constants.swift */; };
 		DBB70A952A4F88CE0053934F /* MealService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB70A942A4F88CE0053934F /* MealService.swift */; };
+		DBB70A972A4F99490053934F /* FilterRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB70A962A4F99490053934F /* FilterRowView.swift */; };
+		DBB70A992A4F9BF70053934F /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB70A982A4F9BF70053934F /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		DBB70A902A4F7B810053934F /* NetworkLayerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayerError.swift; sourceTree = "<group>"; };
 		DBB70A922A4F7DFC0053934F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DBB70A942A4F88CE0053934F /* MealService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealService.swift; sourceTree = "<group>"; };
+		DBB70A962A4F99490053934F /* FilterRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterRowView.swift; sourceTree = "<group>"; };
+		DBB70A982A4F9BF70053934F /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +109,9 @@
 			isa = PBXGroup;
 			children = (
 				DBB70A612A4F76590053934F /* RecipeBrowser_SwiftUIApp.swift */,
+				DBB70A982A4F9BF70053934F /* Models.swift */,
 				DBB70A632A4F76590053934F /* HomeView.swift */,
+				DBB70A962A4F99490053934F /* FilterRowView.swift */,
 				DBB70A8D2A4F79AC0053934F /* Network */,
 				DBB70A652A4F765E0053934F /* Assets.xcassets */,
 				DBB70A672A4F765E0053934F /* Preview Content */,
@@ -286,7 +292,9 @@
 				DBB70A642A4F76590053934F /* HomeView.swift in Sources */,
 				DBB70A8F2A4F79BA0053934F /* NetworkRequest.swift in Sources */,
 				DBB70A622A4F76590053934F /* RecipeBrowser_SwiftUIApp.swift in Sources */,
+				DBB70A992A4F9BF70053934F /* Models.swift in Sources */,
 				DBB70A932A4F7DFC0053934F /* Constants.swift in Sources */,
+				DBB70A972A4F99490053934F /* FilterRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
