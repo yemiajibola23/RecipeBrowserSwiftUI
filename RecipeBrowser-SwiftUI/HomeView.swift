@@ -8,12 +8,19 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var mealService: MealService
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationStack {
+            ScrollView {
+                HStack {
+                    ForEach(MealService.Category.allCases, id: \.self) { category in
+                        Text(category.rawValue)
+                            .fontWeight(.semibold)
+                            .foregroundColor(mealService.categorySelected == category.rawValue ? .orange : .cyan)
+                    }
+                }
+            }
         }
         .padding()
     }
@@ -22,5 +29,6 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environmentObject(MealService())
     }
 }

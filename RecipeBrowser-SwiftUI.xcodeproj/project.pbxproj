@@ -18,6 +18,7 @@
 		DBB70A8F2A4F79BA0053934F /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB70A8E2A4F79BA0053934F /* NetworkRequest.swift */; };
 		DBB70A912A4F7B810053934F /* NetworkLayerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB70A902A4F7B810053934F /* NetworkLayerError.swift */; };
 		DBB70A932A4F7DFC0053934F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB70A922A4F7DFC0053934F /* Constants.swift */; };
+		DBB70A952A4F88CE0053934F /* MealService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB70A942A4F88CE0053934F /* MealService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		DBB70A8E2A4F79BA0053934F /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		DBB70A902A4F7B810053934F /* NetworkLayerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayerError.swift; sourceTree = "<group>"; };
 		DBB70A922A4F7DFC0053934F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DBB70A942A4F88CE0053934F /* MealService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				DBB70A652A4F765E0053934F /* Assets.xcassets */,
 				DBB70A672A4F765E0053934F /* Preview Content */,
 				DBB70A922A4F7DFC0053934F /* Constants.swift */,
+				DBB70A942A4F88CE0053934F /* MealService.swift */,
 			);
 			path = "RecipeBrowser-SwiftUI";
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBB70A912A4F7B810053934F /* NetworkLayerError.swift in Sources */,
+				DBB70A952A4F88CE0053934F /* MealService.swift in Sources */,
 				DBB70A8C2A4F79370053934F /* NetworkLayer.swift in Sources */,
 				DBB70A642A4F76590053934F /* HomeView.swift in Sources */,
 				DBB70A8F2A4F79BA0053934F /* NetworkRequest.swift in Sources */,

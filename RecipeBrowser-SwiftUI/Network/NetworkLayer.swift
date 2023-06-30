@@ -8,6 +8,9 @@
 import Foundation
 
 final class NetworkHandler {
+    
+    // Generic Network Request Handler
+    // params: APIRequest
     func handle<T: Decodable>(request: APIRequest) async throws -> T {
         do {
             let networkRequest = NetworkRequest(apiRequest: request)
