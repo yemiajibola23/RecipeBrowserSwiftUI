@@ -26,6 +26,7 @@ class MealService: ObservableObject {
     }
     
     @Published var categorySelected = "Beef"
+    @Published var selectedMealCategories: [MealCategory] = []
 
 }
 

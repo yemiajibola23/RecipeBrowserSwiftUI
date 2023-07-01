@@ -17,9 +17,32 @@ struct Meal: Decodable {
     var ingredients: [Ingredient]?
 }
 
+struct MealResponse {
+    var meals: [Meal]
+}
+
 struct Ingredient: Decodable {
     var name: String
     var measurement: String
+}
+
+struct MealCategory: Decodable, Hashable {
+    var name: String
+    var thumbnail: URL?
+    var id: String
+}
+
+struct MealCategoryResponse {
+    var categories: [MealCategory]
+    
+    enum CodingKeys: String, CodingKey {
+        case categories = "meals"
+    }
+}
+
+
+extension MealCategory {
+    static let test = MealCategory(name: "Tunisian Orange Cake", thumbnail: URL(string: "https://www.themealdb.com/images/media/meals/y4jpgq1560459207.jpg")!, id: "52970")
 }
 
 extension Meal {

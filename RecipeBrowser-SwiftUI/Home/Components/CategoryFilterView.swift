@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FilterRowView: View {
+struct CategoryFilterView: View {
     @EnvironmentObject var mealService: MealService
     
     var body: some View {
@@ -39,9 +39,9 @@ struct FilterRowView: View {
     }
 }
 
-struct FilterRowView_Previews: PreviewProvider {
+struct CategoryFilterView_Previews: PreviewProvider {
     static var previews: some View {
-        FilterRowView()
+        CategoryFilterView()
             .environmentObject(MealService())
     }
 }
