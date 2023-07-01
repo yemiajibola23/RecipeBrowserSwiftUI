@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Meal: Decodable {
+struct Meal: Decodable, Identifiable {
     var id: String
     var name: String
     var thumbnail: String
@@ -21,7 +21,7 @@ struct MealResponse: Decodable {
     var meals: [Meal]
 }
 
-struct Ingredient: Decodable {
+struct Ingredient: Decodable, Hashable {
     var name: String
     var measurement: String
 }
@@ -76,7 +76,7 @@ extension Meal {
         
     }
     
-    static let test = Meal(id: "53049", name: "Apam balik", thumbnail:  "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg", category: "Dessert", origin: "Mix milk, oil and egg together. Sift flour, baking powder and salt into the mixture. Stir well until all ingredients are combined evenly.\r\n\r\nSpread some batter onto the pan. Spread a thin layer of batter to the side of the pan. Cover the pan for 30-60 seconds until small air bubbles appear.\r\n\r\nAdd butter, cream corn, crushed peanuts and sugar onto the pancake. Fold the pancake into half once the bottom surface is browned.\r\n\r\nCut into wedges and best eaten when it is warm.", instructions: "https://www.youtube.com/watch?v=6R8ffRRJcrg", ingredients: Meal.ingredientTest )
+    static let test = Meal(id: "53049", name: "Apam balik", thumbnail:  "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg", category: "Dessert", origin: "Tunisian", instructions: "Mix milk, oil and egg together. Sift flour, baking powder and salt into the mixture. Stir well until all ingredients are combined evenly.\r\n\r\nSpread some batter onto the pan. Spread a thin layer of batter to the side of the pan. Cover the pan for 30-60 seconds until small air bubbles appear.\r\n\r\nAdd butter, cream corn, crushed peanuts and sugar onto the pancake. Fold the pancake into half once the bottom surface is browned.\r\n\r\nCut into wedges and best eaten when it is warm.", ingredients: Meal.ingredientTest )
     
     static let ingredientTest: [Ingredient]?  = [
         Ingredient(name: "Milk", measurement: "200ml"),

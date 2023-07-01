@@ -12,9 +12,14 @@ struct HomeView: View {
     
     var body: some View {
         NavigationStack {
-            CategoryFilterView()
-            CategoryContentView()
+                CategoryFilterView()
+                CategoryContentView()
+                Spacer()
+                .navigationDestination(for: MealCategory.self) { meal in
+                    MealDetailView(detailViewModel: MealDetailViewModel(category: meal))
+                }
         }
+        .padding(.top, 50)
         .onChange(of: mealService.categorySelected, perform: { newCategory in
             Task {
                 await mealService.fetchMealCategory(newCategory)
@@ -23,8 +28,9 @@ struct HomeView: View {
         .task {
             await mealService.fetchMealCategory(mealService.categorySelected)
         }
-        .padding()
+        
     }
+    
 }
 
 struct HomeView_Previews: PreviewProvider {
