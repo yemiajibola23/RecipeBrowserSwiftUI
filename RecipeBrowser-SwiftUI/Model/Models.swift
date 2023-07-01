@@ -17,7 +17,7 @@ struct Meal: Decodable {
     var ingredients: [Ingredient]?
 }
 
-struct MealResponse {
+struct MealResponse: Decodable {
     var meals: [Meal]
 }
 
@@ -30,9 +30,15 @@ struct MealCategory: Decodable, Hashable {
     var name: String
     var thumbnail: URL?
     var id: String
+    
+    enum CodingKeys: String, CodingKey {
+        case name = "strMeal"
+        case thumbnail = "strMealThumb"
+        case id = "idMeal"
+    }
 }
 
-struct MealCategoryResponse {
+struct MealCategoryResponse: Decodable {
     var categories: [MealCategory]
     
     enum CodingKeys: String, CodingKey {

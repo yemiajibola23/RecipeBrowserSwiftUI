@@ -21,11 +21,17 @@ final class NetworkHandler {
             if response.statusCode == 200 {
                 do {
                     return try JSONDecoder().decode(T.self, from: data)
+                } catch {
+                    throw NetworkLayerError.invalidData
                 }
                 
             } else {
                 throw NetworkLayerError.statusError(response.statusCode)
             }
+        } catch let error as NetworkLayerError {
+            throw error
+        } catch {
+            throw NetworkLayerError.general(error)
         }
     }
 }

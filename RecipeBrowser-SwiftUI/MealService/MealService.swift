@@ -25,8 +25,26 @@ class MealService: ObservableObject {
         case Vegetarian = "Vegetarian"
     }
     
-    @Published var categorySelected = "Beef"
+    @Published var categorySelected = "Dessert"
     @Published var selectedMealCategories: [MealCategory] = []
+    
+    private let mealRepos = MealRepos()
+    
+    // runs on main thread
+    @MainActor func fetchMealCategory(_ category: String) async {
+        do {
+            selectedMealCategories = try await mealRepos.getCategoryList(category: category).categories.sorted(by: { $0.name < $1.name })
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+}
 
+extension MealService {
+    static var test: MealService {
+        let service = MealService()
+        service.selectedMealCategories = [.test]
+        return service
+    }
 }
 

@@ -10,4 +10,6 @@ import Foundation
 enum NetworkLayerError: Error {
     case statusError(Int)
     case httpError
+    case invalidData
+    case general(Error)
 }

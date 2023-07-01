@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct RecipeBrowser_SwiftUIApp: App {
+    @StateObject var mealService = MealService()
     var body: some Scene {
         WindowGroup {
             HomeView()
+                .environmentObject(mealService)
         }
     }
 }
