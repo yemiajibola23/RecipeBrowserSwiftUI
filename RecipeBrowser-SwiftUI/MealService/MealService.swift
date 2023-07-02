@@ -28,6 +28,7 @@ class MealService: ObservableObject {
     @Published var categorySelected = "Dessert"
     @Published var selectedMealCategories: [MealCategory] = []
     @Published var networkLayerError: NetworkLayerError?
+    @Published var mealDetails: [MealDetails] = []
     
     private let mealRepos = MealRepos()
     
@@ -38,6 +39,14 @@ class MealService: ObservableObject {
         } catch {
             networkLayerError = error as? NetworkLayerError ?? .general(error)
             
+        }
+    }
+    
+    @MainActor func getMealDetails(_ category: MealCategory) async {
+        do {
+            mealDetails = try await mealRepos.getMealDetails(id: category.id).mealDetails
+        } catch {
+            networkLayerError = error as? NetworkLayerError ?? .general(error)
         }
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Meal: Decodable, Identifiable {
+struct MealDetails: Decodable, Identifiable {
     var id: String
     var name: String
     var thumbnail: String
@@ -17,8 +17,8 @@ struct Meal: Decodable, Identifiable {
     var ingredients: [Ingredient]?
 }
 
-struct MealResponse: Decodable {
-    var meals: [Meal]
+struct MealDetailsResponse: Decodable {
+    var mealDetails: [MealDetails]
 }
 
 struct Ingredient: Decodable, Hashable {
@@ -51,7 +51,7 @@ extension MealCategory {
     static let test = MealCategory(name: "Tunisian Orange Cake", thumbnail: URL(string: "https://www.themealdb.com/images/media/meals/y4jpgq1560459207.jpg")!, id: "52970")
 }
 
-extension Meal {
+extension MealDetails {
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         let dict = try container.decode([String: String?].self)
@@ -76,7 +76,7 @@ extension Meal {
         
     }
     
-    static let test = Meal(id: "53049", name: "Apam balik", thumbnail:  "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg", category: "Dessert", origin: "Tunisian", instructions: "Mix milk, oil and egg together. Sift flour, baking powder and salt into the mixture. Stir well until all ingredients are combined evenly.\r\n\r\nSpread some batter onto the pan. Spread a thin layer of batter to the side of the pan. Cover the pan for 30-60 seconds until small air bubbles appear.\r\n\r\nAdd butter, cream corn, crushed peanuts and sugar onto the pancake. Fold the pancake into half once the bottom surface is browned.\r\n\r\nCut into wedges and best eaten when it is warm.", ingredients: Meal.ingredientTest )
+    static let test = MealDetails(id: "53049", name: "Apam balik", thumbnail:  "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg", category: "Dessert", origin: "Tunisian", instructions: "Mix milk, oil and egg together. Sift flour, baking powder and salt into the mixture. Stir well until all ingredients are combined evenly.\r\n\r\nSpread some batter onto the pan. Spread a thin layer of batter to the side of the pan. Cover the pan for 30-60 seconds until small air bubbles appear.\r\n\r\nAdd butter, cream corn, crushed peanuts and sugar onto the pancake. Fold the pancake into half once the bottom surface is browned.\r\n\r\nCut into wedges and best eaten when it is warm.", ingredients: MealDetails.ingredientTest )
     
     static let ingredientTest: [Ingredient]?  = [
         Ingredient(name: "Milk", measurement: "200ml"),

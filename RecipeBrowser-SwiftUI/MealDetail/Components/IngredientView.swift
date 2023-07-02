@@ -31,6 +31,6 @@ struct IngredientView: View {
 
 struct IngredientView_Previews: PreviewProvider {
     static var previews: some View {
-        IngredientView(ingredient: Meal.ingredientTest!.first!)
+        IngredientView(ingredient: MealDetails.ingredientTest!.first!)
     }
 }

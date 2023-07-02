@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DetailImageView: View {
-    var meal: Meal
+    var meal: MealDetails
     
     var body: some View {
         AsyncImage(url: URL(string: meal.thumbnail)) { image in

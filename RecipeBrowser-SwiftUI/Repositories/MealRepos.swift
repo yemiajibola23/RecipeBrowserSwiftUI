@@ -9,7 +9,7 @@ import Foundation
 
 protocol MealReposProtocol {
     func getCategoryList(category: String) async throws -> MealCategoryResponse
-    func getMealDetails(id: String) async throws -> MealResponse
+    func getMealDetails(id: String) async throws -> MealDetailsResponse
 }
 
 
@@ -21,7 +21,7 @@ final class MealRepos: MealReposProtocol {
         return try await handler.handle(request: request)
     }
     
-    func getMealDetails(id: String) async throws -> MealResponse {
+    func getMealDetails(id: String) async throws -> MealDetailsResponse {
         let request = MealRequest.mealDetailsById(id)
         return try await handler.handle(request: request)
     }

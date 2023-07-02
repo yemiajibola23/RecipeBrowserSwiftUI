@@ -9,11 +9,13 @@ import SwiftUI
 
 struct MealDetailView: View {
     @StateObject var detailViewModel: MealDetailViewModel
+    @EnvironmentObject var mealService: MealService
+    @State var isShowingAlert = false
     
     var body: some View {
         ScrollView {
             VStack {
-                ForEach(detailViewModel.mealDetails) { meal in
+                ForEach(mealService.mealDetails) { meal in
                     VStack {
                         DetailImageView(meal: meal)
                         DetailNameLabel(meal: meal)
@@ -26,13 +28,19 @@ struct MealDetailView: View {
                 } //ForEach-mealDetails
             } // VStack
         }// ScrollView
-        .frame(width: .infinity)
+        .frame(maxWidth: .infinity)
         .background {
             Color(.systemMint)
                 .ignoresSafeArea()
         } // background
+        .onChange(of: mealService.networkLayerError, perform: { newValue in
+            isShowingAlert = newValue != nil
+        })
         .task {
-            await detailViewModel.getMealDetails()
+            await mealService.getMealDetails(detailViewModel.category)
+        }
+        .alert(isPresented: $isShowingAlert) {
+            Alert(title: Text(mealService.networkLayerError?.title ?? ""), message: Text(mealService.networkLayerError?.message ?? ""))
         }
     }
 }

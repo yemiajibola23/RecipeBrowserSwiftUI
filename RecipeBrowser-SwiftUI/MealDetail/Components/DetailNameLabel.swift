@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DetailNameLabel: View {
-    var meal: Meal
+    var meal: MealDetails
     
     var body: some View {
         HStack {
