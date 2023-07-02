@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MealDetailView: View {
-    @EnvironmentObject var mealService: MealService
     @StateObject var detailViewModel: MealDetailViewModel
     
     var body: some View {
@@ -29,7 +28,7 @@ struct MealDetailView: View {
         }// ScrollView
         .frame(width: .infinity)
         .background {
-            Color(.yellow)
+            Color(.systemMint)
                 .ignoresSafeArea()
         } // background
         .task {

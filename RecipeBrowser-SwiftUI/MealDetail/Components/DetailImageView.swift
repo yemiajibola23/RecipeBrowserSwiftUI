@@ -16,10 +16,9 @@ struct DetailImageView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 200, height: 200)
-                .clipShape(Circle())
-               
+                .clipShape(RoundedRectangle(cornerRadius: 12))
                 .background {
-                    Circle()
+                    RoundedRectangle(cornerRadius: 12)
                         .stroke(lineWidth: 8)
                         .foregroundColor(.black)
                 }

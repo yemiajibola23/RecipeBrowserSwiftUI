@@ -9,17 +9,21 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var mealService: MealService
+    @State var isShowingAlert = false
     
     var body: some View {
         NavigationStack {
-                CategoryFilterView()
-                CategoryContentView()
-                Spacer()
+            TitleView()
+            CategoryFilterView()
+            CategoryContentView()
                 .navigationDestination(for: MealCategory.self) { meal in
                     MealDetailView(detailViewModel: MealDetailViewModel(category: meal))
                 }
         }
         .padding(.top, 50)
+        .onChange(of: mealService.networkLayerError, perform: { newValue in
+            isShowingAlert = newValue != nil
+        })
         .onChange(of: mealService.categorySelected, perform: { newCategory in
             Task {
                 await mealService.fetchMealCategory(newCategory)
@@ -27,10 +31,11 @@ struct HomeView: View {
         }) // on change
         .task {
             await mealService.fetchMealCategory(mealService.categorySelected)
+        } // Task
+        .alert(isPresented: $isShowingAlert) {
+            Alert(title: Text(mealService.networkLayerError?.title ?? ""), message: Text(mealService.networkLayerError?.message ?? ""))
         }
-        
     }
-    
 }
 
 struct HomeView_Previews: PreviewProvider {

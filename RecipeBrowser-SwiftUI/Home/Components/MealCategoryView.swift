@@ -11,9 +11,7 @@ struct MealCategoryView: View {
     var meal: MealCategory
     var body: some View {
         VStack {
-            AsyncImage(url: meal.thumbnail) {
-                image in
-                
+            AsyncImage(url: meal.thumbnail) { image in
                 image
                     .resizable()
                     .scaledToFit()

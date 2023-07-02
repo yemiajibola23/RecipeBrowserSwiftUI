@@ -27,14 +27,14 @@ struct InstructionsView: View {
                     Text(instructions)
                         .foregroundColor(.black)
                         .lineLimit(3)
-                        .onTapGesture {
+                        .onTapGesture(count: 2) {
                             withAnimation(.easeInOut(duration: 1)) {
                                 isInstructionsTapped.toggle()
                             }// withAnimation
                         } // onTapGesture
                 } // if else
             } // HStack
-            .overlay {
+            .overlay(alignment: .bottomTrailing) {
                 Button {
                     withAnimation(.easeInOut(duration: 1)){
                         isInstructionsTapped.toggle()
@@ -61,5 +61,7 @@ struct InstructionsView: View {
 struct InstructionsView_Previews: PreviewProvider {
     static var previews: some View {
         InstructionsView(isInstructionsTapped: .constant(true), instructions: "Mix milk, oil and egg together. Sift flour, baking powder and salt into the mixture. Stir well until all ingredients are combined evenly.\r\n\r\nSpread some batter onto the pan. Spread a thin layer of batter to the side of the pan. Cover the pan for 30-60 seconds until small air bubbles appear.\r\n\r\nAdd butter, cream corn, crushed peanuts and sugar onto the pancake. Fold the pancake into half once the bottom surface is browned.\r\n\r\nCut into wedges and best eaten when it is warm.")
+        
+        InstructionsView(isInstructionsTapped: .constant(false), instructions: "Mix milk, oil and egg together. Sift flour, baking powder and salt into the mixture. Stir well until all ingredients are combined evenly.\r\n\r\nSpread some batter onto the pan. Spread a thin layer of batter to the side of the pan. Cover the pan for 30-60 seconds until small air bubbles appear.\r\n\r\nAdd butter, cream corn, crushed peanuts and sugar onto the pancake. Fold the pancake into half once the bottom surface is browned.\r\n\r\nCut into wedges and best eaten when it is warm.")
     }
 }

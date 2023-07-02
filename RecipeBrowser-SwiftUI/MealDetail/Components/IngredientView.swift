@@ -17,10 +17,10 @@ struct IngredientView: View {
                     .frame(height: 6)
                 Text(ingredient.measurement)
                     .foregroundColor(.gray)
-                    .font(.footnote)
+                    .font(.system(size: 20, weight: .bold))
                 Text(ingredient.name)
                     .foregroundColor(.black)
-                    .font(.caption)
+                    .font(.system(size: 20, weight: .bold))
                 Spacer()
             } // HStack
             .font(.title3)

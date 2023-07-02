@@ -27,6 +27,7 @@ class MealService: ObservableObject {
     
     @Published var categorySelected = "Dessert"
     @Published var selectedMealCategories: [MealCategory] = []
+    @Published var networkLayerError: NetworkLayerError?
     
     private let mealRepos = MealRepos()
     
@@ -35,7 +36,8 @@ class MealService: ObservableObject {
         do {
             selectedMealCategories = try await mealRepos.getCategoryList(category: category).categories.sorted(by: { $0.name < $1.name })
         } catch {
-            print(error.localizedDescription)
+            networkLayerError = error as? NetworkLayerError ?? .general(error)
+            
         }
     }
 }

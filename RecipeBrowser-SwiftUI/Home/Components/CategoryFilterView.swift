@@ -16,14 +16,14 @@ struct CategoryFilterView: View {
                 ForEach(MealService.Category.allCases, id: \.self) { category in
                     Text(category.rawValue)
                         .fontWeight(.semibold)
-                        .foregroundColor(mealService.categorySelected == category.rawValue ? .orange : .cyan)
+                        .foregroundColor(mealService.categorySelected == category.rawValue ? .white : .black)
                         .padding(.vertical, 8)
                         .padding(.horizontal, 12)
                         .frame(maxWidth: .infinity)
                         .background {
                             if mealService.categorySelected == category.rawValue {
                                 Capsule()
-                                    .fill(.green.opacity(0.6))
+                                    .fill(.mint.opacity(0.6))
                                     .shadow(color: .black.opacity(0.1), radius: 5, x: 5, y: 5)
                             } // if statment
                         } //background
@@ -35,7 +35,7 @@ struct CategoryFilterView: View {
                 } // ForEach
             } // HStack
             .padding(.horizontal, 12)
-        }
+        }// Scrollview
     }
 }
 
