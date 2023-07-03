@@ -42,7 +42,7 @@ class MealService: ObservableObject {
         }
     }
     
-    @MainActor func getMealDetails(_ category: MealCategory) async {
+    @MainActor func fetchMealDetails(_ category: MealCategory) async {
         do {
             mealDetails = try await mealRepos.getMealDetails(id: category.id).mealDetails
         } catch {

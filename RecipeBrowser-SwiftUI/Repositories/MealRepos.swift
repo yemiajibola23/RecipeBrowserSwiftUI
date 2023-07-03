@@ -14,7 +14,7 @@ protocol MealReposProtocol {
 
 
 final class MealRepos: MealReposProtocol {
-    let handler = NetworkHandler()
+    private let handler = NetworkHandler()
     
     func getCategoryList(category: String) async throws -> MealCategoryResponse {
         let request = MealRequest.filterByCategory(category)

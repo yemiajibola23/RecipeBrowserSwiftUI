@@ -19,6 +19,10 @@ struct MealDetails: Decodable, Identifiable {
 
 struct MealDetailsResponse: Decodable {
     var mealDetails: [MealDetails]
+    
+    enum CodingKeys: String, CodingKey {
+        case mealDetails = "meals"
+    }
 }
 
 struct Ingredient: Decodable, Hashable {

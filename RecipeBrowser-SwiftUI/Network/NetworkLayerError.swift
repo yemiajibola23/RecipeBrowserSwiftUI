@@ -8,20 +8,13 @@
 import Foundation
 
 enum NetworkLayerError: Error, Equatable {
-    static func == (lhs: NetworkLayerError, rhs: NetworkLayerError) -> Bool {
-        switch (lhs, rhs) {
-        case (.statusError, .statusError),
-            (.httpError, .httpError), (.invalidData, .invalidData), (.general, .general):
-            return true
-        default:
-            return false
-        }
-    }
-    
+    case general(Error)
     case statusError(Int)
     case httpError
-    case invalidData
-    case general(Error)
+    case corruptedData(DecodingError.Context)
+    case keyNotFound(CodingKey, DecodingError.Context)
+    case valueNotFound(Any, DecodingError.Context)
+    case typeMismatch(Any, DecodingError.Context)
     
     var title: String {
         switch self {
@@ -31,8 +24,15 @@ enum NetworkLayerError: Error, Equatable {
             return "HTTP Error"
         case .statusError(let code):
             return "HttP Status \(code)"
-        case .invalidData:
-            return "Invalid data"
+        case .corruptedData:
+            return "Corrupted Data"
+        case .keyNotFound:
+            return "Key not found"
+        case .valueNotFound:
+            return "Value not found"
+        case .typeMismatch:
+            return "Type Mismatch"
+            
         }
     }
     
@@ -44,8 +44,31 @@ enum NetworkLayerError: Error, Equatable {
             return nil
         case .statusError:
             return nil
-        case .invalidData:
-            return "Data from the server was incorrect."
+        case .corruptedData(let context):
+            return  "\(context)"
+        case .keyNotFound(let key, let context):
+            return "\(key) was not found in \(context) when parsing JSON."
+        case .valueNotFound(let value, let context):
+            return "\(value) not found in \(context) when parsing JSON."
+        case .typeMismatch(let type, let context):
+            return "Type '\(type)' mismatch: \(context.debugDescription)\n codingPath:\( context.codingPath)"
+        }
+    }
+}
+
+extension NetworkLayerError {
+    static func == (lhs: NetworkLayerError, rhs: NetworkLayerError) -> Bool {
+        switch (lhs, rhs) {
+        case (.statusError, .statusError),
+            (.httpError, .httpError),
+            (.corruptedData, .corruptedData),
+            (.keyNotFound, .keyNotFound),
+            (.valueNotFound, .valueNotFound),
+            (.typeMismatch, .typeMismatch),
+            (.general, .general):
+            return true
+        default:
+            return false
         }
     }
 }

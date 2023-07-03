@@ -37,7 +37,7 @@ struct MealDetailView: View {
             isShowingAlert = newValue != nil
         })
         .task {
-            await mealService.getMealDetails(detailViewModel.category)
+            await mealService.fetchMealDetails(detailViewModel.category)
         }
         .alert(isPresented: $isShowingAlert) {
             Alert(title: Text(mealService.networkLayerError?.title ?? ""), message: Text(mealService.networkLayerError?.message ?? ""))

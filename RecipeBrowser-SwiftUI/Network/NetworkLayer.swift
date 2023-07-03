@@ -21,8 +21,14 @@ final class NetworkHandler {
             if response.statusCode == 200 {
                 do {
                     return try JSONDecoder().decode(T.self, from: data)
-                } catch {
-                    throw NetworkLayerError.invalidData
+                } catch let DecodingError.dataCorrupted(context) {
+                    throw NetworkLayerError.corruptedData(context)
+                } catch let DecodingError.keyNotFound(key, context) {
+                    throw NetworkLayerError.keyNotFound(key, context)
+                } catch let DecodingError.valueNotFound(value, context) {
+                    throw NetworkLayerError.valueNotFound(value, context)
+                } catch let DecodingError.typeMismatch(type, context)  {
+                    throw NetworkLayerError.typeMismatch(type, context)
                 }
                 
             } else {
